@@ -1,5 +1,6 @@
-const tableData = data
-const tbody = d3.select('tbody')
+const tableData = data;
+tbody = d3.select("tbody")
+
 
 function displayData(data){ 
     tbody.text("")
@@ -12,25 +13,16 @@ function displayData(data){
 
 displayData(tableData)
 
-const handleClick = () => {
-    d3.event.preventDefault()
 
-    const date = d3.select('#datetime').property('value')
-    let filteredData = tableData;
+var dateInputText = d3.select("#datetime")
+var button = d3.select("filter-btn")
 
-    if (date)
-        filteredData = filteredData.filter(row => row.datetime === date)
-    
-    tbody.html('')  // Clear existing data
 
-    data.forEach(row => {
-        const currentRow = tbody.append('tr')  // append row
-        Object.values(row).forEach(value => {
-            const cell = currentRow.append('td')
-            cell.text(value)
-        })
-    })
+function clickSelect(){
+    d3.event.preventDefault();
+    console.log(dateInputText.property("value"));
+    var new_table = tableData.filter(sighting => sighting.datetime===dateInputText.property("value"))
+    displayData(new_table);
 }
 
-d3.selectAll('#filter-btn').on('click', handleClick)
-// buildTable(tableData)
+dateInputText.on("keyup", clickSelect)
