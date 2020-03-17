@@ -1,6 +1,5 @@
-const tableData = data;
-tbody = d3.select("tbody")
-
+const tableData = data
+const tbody = d3.select('tbody')
 
 function displayData(data){ 
     tbody.text("")
@@ -12,7 +11,6 @@ function displayData(data){
 })}
 
 displayData(tableData)
-
 
 var dateInputText = d3.select("#datetime")
 var button = d3.select("filter-btn")
@@ -26,3 +24,4 @@ function clickSelect(){
 }
 
 dateInputText.on("keyup", clickSelect)
+
